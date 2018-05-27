@@ -28,14 +28,14 @@ apt-get update
 
 # PHP upgrade
 
-sudo apt-get install -y python-software-properties
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install -y php7.2
+apt-get install -y python-software-properties
+add-apt-repository ppa:ondrej/php
+apt-get update
+apt-get install -y php7.2
 
 # PHP modules and Xdebug
 
-sudo apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cgi php7.2-cli php7.2-common php7.2-curl php7.2-dba php7.2-dev php7.2-enchant php7.2-fpm php7.2-gd php7.2-gmp php7.2-imap php7.2-interbase php7.2-intl php7.2-json php7.2-ldap php7.2-mbstring php7.2-mysql php7.2-odbc php7.2-opcache php7.2-pgsql php7.2-phpdbg php7.2-pspell php7.2-readline php7.2-recode php7.2-snmp php7.2-soap php7.2-sqlite3 php7.2-sybase php7.2-tidy php7.2-xml php7.2-xmlrpc php7.2-xsl php7.2-zip php-xdebug
+apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cgi php7.2-cli php7.2-common php7.2-curl php7.2-dba php7.2-dev php7.2-enchant php7.2-fpm php7.2-gd php7.2-gmp php7.2-imap php7.2-interbase php7.2-intl php7.2-json php7.2-ldap php7.2-mbstring php7.2-mysql php7.2-odbc php7.2-opcache php7.2-pgsql php7.2-phpdbg php7.2-pspell php7.2-readline php7.2-recode php7.2-snmp php7.2-soap php7.2-sqlite3 php7.2-sybase php7.2-tidy php7.2-xml php7.2-xmlrpc php7.2-xsl php7.2-zip php-xdebug
 
 
 # Xdebug configuration
@@ -47,7 +47,14 @@ xdebug.remote_autostart=1
 //xdebug.remote_log=/tmp/xdebug-remote.log
 //xdebug.idekey = PHPSTORM" >> /etc/php/7.2/mods-available/xdebug.ini
 
-cp /var/www/vagrant_bootstrap/user.ini /etc/php/7.0/apache2/conf.d/ 
+cp /var/www/vagrant_bootstrap/user.ini /etc/php/7.2/apache2/conf.d/ 
+
+
+# Switch PHP version
+
+a2dismod php7.0
+a2enmod php7.2
+
 
 # Finally, restart apache
 service apache2 restart
